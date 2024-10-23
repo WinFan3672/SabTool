@@ -10,6 +10,21 @@ public sealed class BlueprintsCategory : BaseCategory
     public override string Shortcut => "b";
     public override string Usage => "<sub command>";
 
+	public bool Unpack(IEnumerable<string> arguments)
+	{
+		return new UnpackCommand().Execute(arguments);
+	}
+
+	public bool Pack(IEnumerable<string> arguments)
+	{
+		return new PackCommand().Execute(arguments);
+	}
+
+	public bool Dump(IEnumerable<string> arguments)
+	{
+		return new DumpCommand().Execute(arguments);
+	}
+
     public sealed class UnpackCommand : BaseCommand
     {
         public override string Key { get; } = "unpack";

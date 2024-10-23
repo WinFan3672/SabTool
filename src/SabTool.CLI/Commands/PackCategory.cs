@@ -17,6 +17,11 @@ public sealed class PackCategory : BaseCategory
     public override string Shortcut { get; } = "p";
     public override string Usage { get; } = "<sub command>";
 
+	public bool Unpack(IEnumerable<string> arguments)
+	{
+		return new UnpackCommand().Execute(arguments);
+	}
+
     public sealed class UnpackCommand : BaseCommand
     {
         public override string Key { get; } = "unpack";

@@ -40,8 +40,13 @@ public sealed partial class ResourceDepot : IBlueprintDepot
         if (IsInitialized)
             return;
 
-        GamePath = gamePath;
+        GamePath = FixPathSeparator(gamePath);
     }
+
+	private string FixPathSeparator(string path)
+	{
+		return path.Replace('/', Path.DirectorySeparatorChar).Replace('\\', Path.DirectorySeparatorChar);
+	}
 
     public Resource GetLoadedResources(Resource resources = Resource.None)
     {
@@ -131,6 +136,6 @@ public sealed partial class ResourceDepot : IBlueprintDepot
 
     public string GetGamePath(string path)
     {
-        return Path.Combine(GamePath, path);
+        return FixPathSeparator(Path.Combine(GamePath, path));
     }
 }

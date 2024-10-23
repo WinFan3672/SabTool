@@ -12,6 +12,21 @@ public sealed class MegapackCategory : BaseCategory
     public override string Shortcut => "m";
     public override string Usage => "<sub command>";
 
+	public bool List(IEnumerable<string> arguments)
+	{
+		return new ListCommand().Execute(arguments);
+	}
+
+	public bool Unpack(IEnumerable<string> arguments)
+	{
+		return new UnpackCommand().Execute(arguments);
+	}
+
+	public bool Pack(IEnumerable<string> arguments)
+	{
+		return new PackCommand().Execute(arguments);
+	}
+
     public sealed class ListCommand : BaseCommand
     {
         public override string Key { get; } = "list";

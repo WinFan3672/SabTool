@@ -21,6 +21,11 @@ public sealed class LooseFilesCategory : BaseCategory
     public override string Shortcut => "l";
     public override string Usage => "<sub command name>";
 
+	public bool Unpack(IEnumerable<string> arguments)
+	{
+		return new UnpackCommand().Execute(arguments);
+	}
+
     public sealed class UnpackCommand : BaseCommand
     {
         public override string Key { get; } = "unpack";
